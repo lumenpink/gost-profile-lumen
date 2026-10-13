@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil Lumen — GOST: Identidade, Versões &amp; Dark Mode</title>
+  <meta name="description" content="Perfil de especialização pessoal da norma GOST com herança Kollontai, versão short/long, rodapé transfeminista e Open Graph KokoroSim.">
+
+  <!-- OpenGraph & Twitter Cards (Padrão KokoroSim) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Perfil Lumen — GOST: Identidade, Versões &amp; Dark Mode">
+  <meta property="og:description" content="Perfil de especialização pessoal da norma GOST com herança Kollontai, versão short/long, rodapé transfeminista e Open Graph KokoroSim.">
+  <meta property="og:url" content="https://gostlumen.2lp.in/">
+  <meta property="og:image" content="https://gostlumen.2lp.in/assets/og_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Perfil Lumen — GOST: Identidade, Versões &amp; Dark Mode">
+  <meta name="twitter:description" content="Perfil de especialização pessoal da norma GOST com herança Kollontai, versão short/long, rodapé transfeminista e Open Graph KokoroSim.">
+  <meta name="twitter:image" content="https://gostlumen.2lp.in/assets/og_preview.png">
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-muted: #8b949e;
+      --accent: #ff79c6;
+      --accent-hover: #ff92d0;
+      --link: #58a6ff;
+      --code-bg: #1f242c;
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8fa;
+        --card-bg: #ffffff;
+        --border: #d0d7de;
+        --text: #24292f;
+        --text-muted: #57606a;
+        --accent: #d03080;
+        --accent-hover: #e04090;
+        --link: #0969da;
+        --code-bg: #eaeef2;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .badge-accent {
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .raw-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .raw-box-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .raw-url {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    article h2 {
+      font-size: 1.45rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    article h3 {
+      font-size: 1.15rem;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    article p, article ul, article ol {
+      margin-bottom: 1rem;
+    }
+
+    article ul, article ol {
+      padding-left: 1.5rem;
+    }
+
+    article li {
+      margin-bottom: 0.35rem;
+    }
+
+    article a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    article a:hover {
+      text-decoration: underline;
+    }
+
+    article hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    article code {
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      background: var(--code-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    article pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    article pre code {
+      background: none;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      font-size: inherit;
+    }
+
+    article blockquote {
+      border-left: 4px solid var(--accent);
+      padding: 0.75rem 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Rodapé Canônico em 2 Linhas */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1rem;
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .footer-canonical {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-line-identity {
+      font-weight: 500;
+    }
+
+    .footer-line-metadata {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    .site-footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Perfil de Implementação: Lumen</h1>
+      <p class="subtitle">Especialização pessoal e autoral para repositórios sob a norma GOST, estendendo o perfil Kollontai.</p>
+
+      <div class="badges">
+        <span class="badge badge-accent">Perfil: lumen</span>
+        <span class="badge">Versão: v0.1.0</span>
+        <span class="badge">Herança: extends kollontai</span>
+        <span class="badge">Norma Base: GOST v1.4.0</span>
+        <a class="badge" href="https://kollontai.2lp.in" target="_blank" rel="noopener">Perfil Pai: kollontai.2lp.in ↗</a>
+      </div>
+
+      <div class="raw-box">
+        <div class="raw-box-title">URL Canônica do Perfil (Agnóstica de Forja Git)</div>
+        <div class="raw-url">https://gostlumen.2lp.in/profile.md</div>
+      </div>
+
+      <div class="quick-links">
+        <a class="btn" href="profile.md" download>📥 Baixar profile.md</a>
+        <a class="btn" href="card_preview.html">🖼️ Preview Cards (KokoroSim)</a>
+        <a class="btn" href="https://codeberg.org/lumenpink/gost-profile-lumen" target="_blank" rel="noopener">🦊 Forja (Codeberg)</a>
+        <a class="btn" href="https://kollontai.2lp.in" target="_blank" rel="noopener">🏛️ Perfil Kollontai</a>
+        <a class="btn" href="https://gost.2lp.in" target="_blank" rel="noopener">📜 Norma GOST</a>
+      </div>
+    </header>
+
+    <article>
+      <blockquote>
+        <strong>Sobre este Perfil:</strong><br>
+        O perfil <strong>Lumen</strong> é a especialização pessoal e autoral do padrão <a href="https://gost.2lp.in">GOST</a>.
+        Ele estende diretamente o perfil base <a href="https://kollontai.2lp.in">Kollontai</a> (<code>extends: https://kollontai.2lp.in/profile.md</code>),
+        herdando integralmente todas as suas decisões de infraestrutura (Codeberg, <code>cccp</code>, deploy em <code>*.2lp.in</code>, esteira de CI/CD, runners OCI e testes herméticos),
+        aplicando regras de precedência soberana (<em>deep override</em>) para estilização, identidade, Open Graph e ergonomia de documentação.
+      </blockquote>
+
+      <h2>1. Identidade e Herança em Cascata (<em>Cascading Profile</em>)</h2>
+      <ul>
+        <li><strong>Perfil Pai:</strong> <code>https://kollontai.2lp.in/profile.md</code> (Kollontai)</li>
+        <li><strong>Precedência:</strong> Qualquer regra explicitada neste documento tem precedência estrita sobre o perfil pai. Todas as regras não mencionadas aqui são herdadas automaticamente do Kollontai e da norma central GOST.</li>
+        <li><strong>Domínio Canônico:</strong> <code>https://gostlumen.2lp.in</code></li>
+        <li><strong>Forja Primária:</strong> Codeberg (<code>https://codeberg.org/lumenpink/gost-profile-lumen</code>)</li>
+      </ul>
+
+      <hr>
+
+      <h2>2. Exibição Estrita de Versões Semânticas</h2>
+      <p>Para garantir legibilidade instantânea em cabeçalhos de tela sem abrir mão do rastreamento rigoroso de builds de desenvolvimento, projetos sob o perfil Lumen <strong>DEVEM</strong> aderir à seguinte regra de apresentação de versões:</p>
+
+      <h3>2.1 Título, Badges e Cabeçalhos (Versão Short)</h3>
+      <ul>
+        <li><strong>Formato:</strong> <code>v{MAJOR}.{MINOR}.{PATCH}</code></li>
+        <li><strong>Regra de Truncamento:</strong> A versão exibida em tags visuais, badges e títulos principais <strong>DEVE</strong> ser truncada antes de qualquer metadado de build (cortada imediatamente antes do caractere <code>+</code> ou preservada limpa se tag de release final).</li>
+        <li><em>Exemplo:</em> Se o arquivo <code>VERSION</code> contiver <code>0.1.0+20261013</code>, o título e badges exibem estritamente <code>v0.1.0</code>.</li>
+      </ul>
+
+      <h3>2.2 Rodapé Canônico (Versão Long / Completa)</h3>
+      <ul>
+        <li><strong>Formato:</strong> String integral idêntica ao conteúdo do arquivo <code>VERSION</code> na raiz do repositório.</li>
+        <li><em>Exemplo:</em> <code>Joaju v0.1.0+20261013 • por Lumen Pink • Brasil 🇧🇷 • CC0-1.0</code></li>
+      </ul>
+
+      <hr>
+
+      <h2>3. Rodapé Canônico em Duas Linhas (Afirmação Identitária &amp; Soberania)</h2>
+      <p>Todo projeto, interface gráfica, vitrine pública ou documentação estática (<code>./site</code>) <strong>DEVE</strong> exibir o rodapé canônico formatado em <strong>duas linhas rigorosamente estruturadas</strong>:</p>
+
+      <pre><code>&lt;footer class="site-footer"&gt;
+  &lt;div class="footer-canonical"&gt;
+    &lt;div class="footer-line-identity"&gt;
+      Orgulhosamente produzido por uma &lt;a href="https://travesti.2lp.in/pt/" target="_blank" rel="noopener"&gt;travesti latina&lt;/a&gt; 🏳️‍⚧️ :)
+    &lt;/div&gt;
+    &lt;div class="footer-line-metadata"&gt;
+      {Nome do Projeto} v{Versão Completa} • por &lt;a href="https://lumen.pink" target="_blank" rel="noopener"&gt;Lumen Pink&lt;/a&gt; • Brasil 🇧🇷 • &lt;a href="LICENSE"&gt;{Licença}&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+
+      <h3>Regras do Rodapé:</h3>
+      <ul>
+        <li><strong>Linha 1 — Afirmação Identitária Transfeminista:</strong><br>
+          <code>Orgulhosamente produzido por uma [travesti latina](https://travesti.2lp.in/&lt;lang&gt;/) 🏳️‍⚧️ :)</code>
+          <ul>
+            <li>O termo <em>travesti</em> é mantido sem tradução em todas as versões idiomáticas (PT, EN, ES, RU, etc.).</li>
+            <li>O adjetivo concorda gramaticalmente com a língua de exibição e inclui link com o código de idioma ativo (<code>/pt/</code>, <code>/en/</code>, etc.).</li>
+          </ul>
+        </li>
+        <li><strong>Linha 2 — Metadados de Soberania, Autoria e Licença:</strong><br>
+          <code>{Nome do Projeto} v{Versão Completa} • por [Lumen Pink](https://lumen.pink) • Brasil 🇧🇷 • [{Licença}](LICENSE)</code>
+          <ul>
+            <li>Exibe a versão integral de <code>VERSION</code>, o link autoral e o link relativo para o arquivo de licença no repositório.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <hr>
+
+      <h2>4. Banners, Open Graph &amp; Cards Sociais (Padrão KokoroSim)</h2>
+      <p>O compartilhamento de links de projetos em redes sociais e mensageiros (WhatsApp, Telegram, Discord, Twitter/X, LinkedIn) <strong>DEVE</strong> aderir à arquitetura visual e técnica anti-recorte KokoroSim:</p>
+
+      <h3>4.1 Especificações da Imagem Open Graph (<code>./site/assets/og_preview.png</code>)</h3>
+      <ul>
+        <li><strong>Resolução Obrigatória:</strong> Exatamente <code>1200 × 630 pixels</code> (proporção 1.91:1, formato PNG otimizado, espaço de cores sRGB).</li>
+        <li><strong>Safe Zone 4:3 Centralizada (Anti-Recorte):</strong>
+          <ul>
+            <li><strong>Largura Central Útil:</strong> Entre <code>720px</code> e <code>840px</code>.</li>
+            <li><strong>Altura Central Útil:</strong> <code>500px</code>.</li>
+            <li><strong>Sangrias Laterais de Segurança:</strong> Mínimo de <code>180px</code> a <code>240px</code> em cada lateral (reservadas exclusivamente a fundos, gradientes ou texturas decorativas, sem texto).</li>
+            <li><strong>Margens Verticais de Segurança:</strong> Top padding mínimo de <code>52px</code>; bottom padding mínimo de <code>85px</code> (evita sobreposição por carimbos de hora ou balões de chat).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>4.2 Limites Rigorosos de Caracteres (Anti-Truncamento)</h3>
+      <ul>
+        <li><strong><code>&lt;meta property="og:title"&gt;</code> / <code>twitter:title</code>:</strong> Limite seguro entre <strong>50 e 65 caracteres</strong> (teto máximo absoluto: 70 caracteres).</li>
+        <li><strong><code>&lt;meta property="og:description"&gt;</code> / <code>twitter:description</code>:</strong> Limite seguro entre <strong>120 e 155 caracteres</strong> (teto máximo absoluto: 160 caracteres).</li>
+        <li><strong>Badge Superior no Banner:</strong> Máximo de <strong>35 caracteres</strong> em caixa alta.</li>
+        <li><strong>Título Principal no Banner:</strong> Máximo de <strong>35 a 45 caracteres</strong> em tipografia bold condensada.</li>
+        <li><strong>Subtítulo no Banner:</strong> Máximo de <strong>50 a 60 caracteres</strong> em linha única.</li>
+      </ul>
+
+      <h3>4.3 Suporte Obrigatório a Dark Mode</h3>
+      <ul>
+        <li>Todas as páginas e componentes web <strong>DEVEM</strong> prover suporte nativo de primeira classe a Dark Mode via tokens CSS (<code>--bg</code>, <code>--text</code>, <code>--accent</code>, <code>--border</code>) respeitando preferencialmente <code>@media (prefers-color-scheme: dark)</code>.</li>
+        <li><strong>Página de Simulação:</strong> Disponibilização de <a href="card_preview.html"><code>site/card_preview.html</code></a> contendo simulador interativo dos cards em WhatsApp (Dark Mode) e Twitter/X (Summary Large Image).</li>
+      </ul>
+
+      <hr>
+
+      <h2>5. Publicação Web na Borda (<code>gostlumen.2lp.in</code>)</h2>
+      <ul>
+        <li><strong>Domínio Principal:</strong> <code>https://gostlumen.2lp.in</code></li>
+        <li><strong>Hospedagem:</strong> Cloudflare Pages / Workers através de <code>wrangler.jsonc</code> com assets estáticos servidos em <code>./site</code>.</li>
+        <li><strong>Redundância:</strong> Deploy em Codeberg Pages via branch órfã <code>pages</code> com commit stateless único e force push.</li>
+      </ul>
+    </article>
+
+    <!-- Rodapé Canônico em 2 Linhas -->
+    <footer class="site-footer">
+      <div class="footer-canonical">
+        <div class="footer-line-identity">
+          Orgulhosamente produzido por uma <a href="https://travesti.2lp.in/pt/" target="_blank" rel="noopener">travesti latina</a> 🏳️‍⚧️ :)
+        </div>
+        <div class="footer-line-metadata">
+          gost-profile-lumen v0.1.0-dev.1 • por <a href="https://lumen.pink" target="_blank" rel="noopener">Lumen Pink</a> • Brasil 🇧🇷 • <a href="LICENSE">CC-BY-SA-4.0</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

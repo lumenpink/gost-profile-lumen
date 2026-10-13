@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gost-profile-lumen",
+  "compatibility_date": "2024-09-23",
+  "routes": [
+    {
+      "pattern": "gostlumen.2lp.in",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": "./site"
+  }
+}
