@@ -415,6 +415,24 @@
         <li><strong>Hospedagem:</strong> Cloudflare Pages / Workers através de <code>wrangler.jsonc</code> com assets estáticos servidos em <code>./site</code>.</li>
         <li><strong>Redundância:</strong> Deploy em Codeberg Pages via branch órfã <code>pages</code> com commit stateless único e force push.</li>
       </ul>
+
+      <hr>
+
+      <h2>6. Governança de Documentação &amp; Vitrine (<code>site_type</code>)</h2>
+      <ul>
+        <li><strong>Tipologia Canônica:</strong>
+          <ul>
+            <li><strong><code>site_type: doc</code>:</strong> Vitrines de documentação para bibliotecas, daemons e perfis (onde <code>site/index.html</code> exibe a documentação diretamente).</li>
+            <li><strong><code>site_type: app</code>:</strong> Aplicações web completas (como Navalha, Joaju), onde <code>site/index.html</code> carrega a SPA/WASM e toda documentação e help do usuário reside sob <code>site/doc/</code>.</li>
+          </ul>
+        </li>
+        <li><strong>Single Source of Truth para Documentação:</strong>
+          <ul>
+            <li>Todo texto autoral reside exclusivamente em Markdown. É proibido duplicar textos manualmente em arquivos HTML estáticos.</li>
+            <li>O <code>README.md</code> da raiz atua como portal enxuto (até 50 linhas), delegando aprofundamentos para a vitrine oficial <code>*.2lp.in</code>.</li>
+          </ul>
+        </li>
+      </ul>
     </article>
 
     <!-- Rodapé Canônico em 2 Linhas -->

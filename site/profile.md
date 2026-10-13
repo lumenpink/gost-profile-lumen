@@ -97,3 +97,15 @@ O compartilhamento de links de projetos em redes sociais e mensageiros (WhatsApp
 * **Domínio Principal:** `https://gostlumen.2lp.in`
 * **Hospedagem:** Cloudflare Pages / Workers através de `wrangler.jsonc` com assets estáticos servidos em `./site`.
 * **Redundância:** Deploy em Codeberg Pages via branch órfã `pages` com commit stateless único e force push.
+
+---
+
+## 6. Governança de Documentação & Vitrine (`site_type`)
+
+* **Tipologia Canônica:**
+  - **`site_type: doc`:** Vitrines de bibliotecas, perfis e daemons (onde `site/index.html` exibe a documentação diretamente).
+  - **`site_type: app`:** Aplicações web completas (como Navalha, Joaju), onde `site/index.html` carrega a SPA/WASM e toda documentação e help do usuário reside sob `site/doc/`.
+* **Single Source of Truth para Documentação:**
+  - Todo texto documental e tutorial vive estritamente em Markdown. É proibido duplicar textos manualmente em arquivos HTML estáticos.
+  - O `README.md` da raiz atua como portal enxuto (até 50 linhas), delegando aprofundamentos para a vitrine oficial `*.2lp.in`.
+
