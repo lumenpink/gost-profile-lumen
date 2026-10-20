@@ -1588,6 +1588,9 @@ auto_check = true
 
 # Intervalo mínimo em horas entre consultas remotas de rede (padrão: 24 horas)
 check_interval_hours = 24
+
+# Auto-atualização transparente em segundo plano para a próxima execução (padrão: false)
+auto_update = false
 ```
 
 #### Precedência de Resolução de Canal:
@@ -1641,6 +1644,18 @@ Todo aplicativo sob o perfil Lumen DEVE fornecer os seguintes subcomandos:
 - `<app> config pin [<version>]`
 - `<app> config unpin`
 - `<app> config set-auto-check <true|false>`
+- `<app> config set-auto-update <true|false>`
+
+### 7.7 Mecanismo de Auto-Atualização Transparente (auto_update)
+
+1. **Consentimento Estrito:** Desabilitado por padrão (`auto_update = false`). Nenhuma atualização automática ocorre sem ativação explícita.
+2. **Salvaguarda de Pinning:** Caso `pinned = true` ou se houver versão fixada em `pin`, qualquer rotina de auto-update é sumariamente ignorada.
+3. **Substituição Atômica Não-Destrutiva:** O download e a substituição do binário ocorrem de forma atômica no sistema de arquivos para a próxima inicialização, mantendo a integridade total do processo em execução na RAM.
+4. **Notificação Informativa em `stderr`:**
+   ```text
+   ✨ [<app>] Atualização automática aplicada: vX.Y.Z -> vA.B.C.
+      A nova versão estará ativa na sua próxima execução.
+   ```
 
 ---
 
