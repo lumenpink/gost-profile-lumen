@@ -8,4 +8,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **spec:** normatizar protocolo opendesktop xdg de auto-atualizacao e distribuicao banca (closes #3)
 - Inicialização do repositório em conformidade com o padrão GOST.
