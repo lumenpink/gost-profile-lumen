@@ -46,12 +46,22 @@ check_pattern '10 versões mais recentes' "Regra de retenção de 10 versões ni
 check_pattern 'curl -sSf https://banca.2lp.in/downloads/<app>/install.sh | sh' "Comando canônico curl para install.sh" || FAILED=1
 check_pattern 'Veto Absoluto a Binários no Codeberg / Git' "Veto absoluto a binários no Codeberg/Git" || FAILED=1
 
-# 4. Mutation Check: simular remoção de padrões críticos em cópia temporária e verificar falha esperada
+# 4. Seção 9 - Continuous Deployment de Servidores & Descomissionamento Watchtower
+check_pattern '## 9. Arquitetura de Entrega Contínua de Containers (Continuous Deployment de Servidores)' "Cabeçalho da Seção 9 presente" || FAILED=1
+check_pattern 'Descomissionamento Compulsório do Watchtower' "Descomissionamento compulsório do Watchtower" || FAILED=1
+check_pattern 'Nó Central de Execução (`obizero` / Deploy Local Imediato)' "Deploy local imediato no nó central obizero" || FAILED=1
+check_pattern 'Nós de Borda Remotos (`obione` e `obitwo` / Deploy via Tailscale)' "Deploy remoto em nós de borda obione e obitwo" || FAILED=1
+check_pattern 'docker compose -f /home/lumen/stacks/<app>/compose.yml up -d --no-build <app>' "Comando de deploy local sem download redundante" || FAILED=1
+check_pattern 'docker image prune -f' "Purga automática de camadas órfãs" || FAILED=1
+check_pattern 'Healthcheck Ativo' "Sondagem ativa de healthcheck" || FAILED=1
+check_pattern 'Protocolo de Rollback em Falha' "Protocolo de rollback automatizado" || FAILED=1
+check_pattern 'com.centurylinklabs.watchtower.enable' "Veto e descarte de labels do Watchtower" || FAILED=1
+
+# 5. Mutation Check
 echo "=== [MUTATION] Testando detecção de mutantes críticos ==="
 TMP_MUTANT=$(mktemp)
 trap 'rm -f "$TMP_MUTANT"' EXIT
 
-# Mutante A: Omissão de stderr
 grep -v "stderr" "$PROFILE" > "$TMP_MUTANT"
 if grep -qF "stderr" "$TMP_MUTANT"; then
     echo "  [FAIL] Mutante A não foi gerado corretamente"
@@ -60,7 +70,6 @@ else
     echo "  [PASS] Mutante A (sem stderr) isolado com sucesso"
 fi
 
-# Mutante B: Omissão de retenção de 5 versões estáveis
 grep -v "5 versões mais recentes" "$PROFILE" > "$TMP_MUTANT"
 if grep -qF "5 versões mais recentes" "$TMP_MUTANT"; then
     echo "  [FAIL] Mutante B não foi gerado corretamente"
@@ -69,10 +78,18 @@ else
     echo "  [PASS] Mutante B (sem retenção estável) isolado com sucesso"
 fi
 
+grep -v "obizero" "$PROFILE" > "$TMP_MUTANT"
+if grep -qF "obizero" "$TMP_MUTANT"; then
+    echo "  [FAIL] Mutante C não foi gerado corretamente"
+    FAILED=1
+else
+    echo "  [PASS] Mutante C (sem obizero) isolado com sucesso"
+fi
+
 if [ $FAILED -ne 0 ]; then
-    echo "❌ [FAIL] Auditoria/Mutantes falharam."
+    echo "❌ [RED TEST] Auditoria falhou: profile.md ainda não implementou a especificação completa."
     exit 1
 fi
 
-echo "✔ [PASS] Auditoria e testes de mutação aprovados com 100% de cobertura."
+echo "✔ [GREEN TEST] Auditoria aprovada: profile.md possui todas as seções e diretivas canônicas."
 exit 0
