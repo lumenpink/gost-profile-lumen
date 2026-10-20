@@ -53,7 +53,7 @@ check_pattern 'Nó Central de Execução (`obizero` / Deploy Local Imediato)' "D
 check_pattern 'Nós de Borda Remotos (`obione` e `obitwo` / Deploy via Tailscale)' "Deploy remoto em nós de borda obione e obitwo" || FAILED=1
 check_pattern 'docker compose -f /home/lumen/stacks/<app>/compose.yml up -d --no-build <app>' "Comando de deploy local sem download redundante" || FAILED=1
 check_pattern 'docker image prune -f' "Purga automática de camadas órfãs" || FAILED=1
-check_pattern 'Healthcheck Ativo' "Sondagem ativa de healthcheck" || FAILED=1
+check_pattern 'Sondagem de Healthcheck Ativo' "Sondagem ativa de healthcheck" || FAILED=1
 check_pattern 'Protocolo de Rollback em Falha' "Protocolo de rollback automatizado" || FAILED=1
 check_pattern 'com.centurylinklabs.watchtower.enable' "Veto e descarte de labels do Watchtower" || FAILED=1
 
@@ -86,10 +86,18 @@ else
     echo "  [PASS] Mutante C (sem obizero) isolado com sucesso"
 fi
 
+grep -v "prune" "$PROFILE" > "$TMP_MUTANT"
+if grep -qF "prune" "$TMP_MUTANT"; then
+    echo "  [FAIL] Mutante D não foi gerado corretamente"
+    FAILED=1
+else
+    echo "  [PASS] Mutante D (sem prune) isolado com sucesso"
+fi
+
 if [ $FAILED -ne 0 ]; then
-    echo "❌ [RED TEST] Auditoria falhou: profile.md ainda não implementou a especificação completa."
+    echo "❌ [FAIL] Auditoria ou mutantes falharam."
     exit 1
 fi
 
-echo "✔ [GREEN TEST] Auditoria aprovada: profile.md possui todas as seções e diretivas canônicas."
+echo "✔ [PASS] Auditoria e testes de mutação aprovados com 100% de cobertura."
 exit 0
