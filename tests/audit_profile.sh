@@ -31,6 +31,8 @@ check_pattern 'update_check.json' "Arquivo de cache update_check.json" || FAILED
 check_pattern 'check_interval_hours' "Campo check_interval_hours no TOML" || FAILED=1
 check_pattern 'auto_check' "Campo auto_check no TOML" || FAILED=1
 check_pattern 'pinned' "Campo pinned no TOML" || FAILED=1
+check_pattern 'auto_update' "Campo auto_update no TOML" || FAILED=1
+check_pattern 'set-auto-update' "Subcomando set-auto-update na CLI" || FAILED=1
 check_pattern 'stderr' "Alerta exclusivamente via stderr" || FAILED=1
 check_pattern '--force' "Documentação de salvaguarda da flag --force" || FAILED=1
 
@@ -95,9 +97,9 @@ else
 fi
 
 if [ $FAILED -ne 0 ]; then
-    echo "❌ [FAIL] Auditoria ou mutantes falharam."
+    echo "❌ [RED TEST] Auditoria falhou: profile.md ainda não implementou a especificação completa."
     exit 1
 fi
 
-echo "✔ [PASS] Auditoria e testes de mutação aprovados com 100% de cobertura."
+echo "✔ [GREEN TEST] Auditoria aprovada: profile.md possui todas as seções e diretivas canônicas."
 exit 0
