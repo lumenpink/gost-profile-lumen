@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **spec:** normatizar flag e mecanismo de auto_update configuravel (closes #5)
 - **spec:** normatizar continuous deployment soberano de containers e descomissionar watchtower (closes #4)
 - **spec:** normatizar protocolo opendesktop xdg de auto-atualizacao e distribuicao banca (closes #3)
 - Inicialização do repositório em conformidade com o padrão GOST.
