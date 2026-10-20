@@ -96,6 +96,14 @@ else
     echo "  [PASS] Mutante D (sem prune) isolado com sucesso"
 fi
 
+grep -v "auto_update" "$PROFILE" > "$TMP_MUTANT"
+if grep -qF "auto_update" "$TMP_MUTANT"; then
+    echo "  [FAIL] Mutante E não foi gerado corretamente"
+    FAILED=1
+else
+    echo "  [PASS] Mutante E (sem auto_update) isolado com sucesso"
+fi
+
 if [ $FAILED -ne 0 ]; then
     echo "❌ [RED TEST] Auditoria falhou: profile.md ainda não implementou a especificação completa."
     exit 1
