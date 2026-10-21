@@ -21,6 +21,11 @@ FAILED=0
 # 1. Frontmatter
 check_pattern 'target_gost: "1.5.0"' "Frontmatter target_gost atualizado para 1.5.0" || FAILED=1
 
+# 1.1 Forja Soberana e Espelhos
+check_pattern 'git.2lp.in' "Menção à forja soberana git.2lp.in" || FAILED=1
+check_pattern 'git@git.2lp.in:lumen/' "Remote SSH padrão na porta 22 git@git.2lp.in:lumen/" || FAILED=1
+check_pattern 'Push Mirror' "Diretriz de Push Mirror para Codeberg e GitHub" || FAILED=1
+
 # 2. Seção 7 - OpenDesktop XDG
 check_pattern '## 7. Protocolo Soberano de Atualização e Conformidade OpenDesktop (XDG Base Directory)' "Cabeçalho da Seção 7 presente" || FAILED=1
 check_pattern '$XDG_CONFIG_HOME' "Resolução XDG_CONFIG_HOME" || FAILED=1
