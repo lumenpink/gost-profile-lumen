@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gost-profile-lumen — Preview de Compartilhamento</title>
+  <meta name="description" content="Simulação de renderização social em WhatsApp Dark Mode e Twitter/X no padrão KokoroSim para o perfil GOST Lumen.">
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-muted: #8b949e;
+      --accent: #ff79c6;
+      --link: #58a6ff;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+
+    .nav-back:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .showcase-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    .mockup-column {
+      flex: 1;
+      min-width: 340px;
+      max-width: 500px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .platform-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .platform-header h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* --- WhatsApp Mockup --- */
+    .wa-chat-bg {
+      background-color: #0b141a;
+      padding: 16px 12px;
+      border-radius: 10px;
+      background-image: radial-gradient(#111b21 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    .wa-bubble {
+      background-color: #005c4b;
+      color: #e9edef;
+      border-radius: 8px 8px 8px 0;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      max-width: 420px;
+    }
+
+    .wa-preview-card {
+      background: #025144;
+      border-radius: 6px;
+      margin: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wa-preview-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .wa-preview-info {
+      padding: 10px 12px;
+    }
+
+    .wa-preview-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e9edef;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .wa-preview-desc {
+      font-size: 0.8rem;
+      color: #8696a0;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .wa-preview-domain {
+      font-size: 0.72rem;
+      color: #8696a0;
+      margin-top: 6px;
+      text-transform: lowercase;
+    }
+
+    .wa-chat-link {
+      padding: 6px 12px 10px 12px;
+      font-size: 0.88rem;
+      color: #53bdeb;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+
+    /* --- Twitter / X Mockup --- */
+    .twitter-container {
+      background-color: #000000;
+      border: 1px solid #2f3336;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .twitter-container:hover {
+      border-color: #536471;
+    }
+
+    .twitter-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid #2f3336;
+    }
+
+    .twitter-info {
+      padding: 12px 16px;
+      background: #000000;
+    }
+
+    .twitter-domain {
+      color: #71767b;
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+    }
+
+    .twitter-title {
+      color: #e7e9ea;
+      font-weight: 700;
+      font-size: 0.96rem;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .twitter-desc {
+      color: #71767b;
+      font-size: 0.85rem;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* --- Seção de Imagem Raw --- */
+    .raw-image-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .raw-image-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .raw-image-frame {
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .raw-image-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Rodapé canônico de 2 linhas */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1rem;
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      width: 100%;
+    }
+
+    .footer-canonical {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-line-identity {
+      font-weight: 500;
+    }
+
+    .footer-line-metadata {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    .site-footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Preview de Compartilhamento Social</h1>
+      <p class="subtitle">Simulação visual fiel no padrão <b>KokoroSim</b> (Safe Zone 4:3 centralizada com margem lateral anti-recorte de 180px) em <b>https://gostlumen.2lp.in/</b></p>
+      <a class="nav-back" href="index.html">← Voltar para o Perfil Lumen</a>
+    </header>
+
+    <div class="showcase-grid">
+      <!-- Mockup WhatsApp -->
+      <div class="mockup-column">
+        <div class="platform-header">
+          <span style="font-size: 1.4rem;">💬</span>
+          <h2>WhatsApp (Dark Mode)</h2>
+        </div>
+        <div class="wa-chat-bg">
+          <div class="wa-bubble">
+            <div class="wa-preview-card">
+              <img src="assets/og_preview.png" class="wa-preview-img" alt="Preview gost-profile-lumen">
+              <div class="wa-preview-info">
+                <div class="wa-preview-title">Perfil Lumen — GOST: Identidade, Versões &amp; Dark Mode</div>
+                <div class="wa-preview-desc">Perfil de especialização pessoal da norma GOST com herança Kollontai, versão short/long, rodapé transfeminista e Open Graph KokoroSim.</div>
+                <div class="wa-preview-domain">gostlumen.2lp.in</div>
+              </div>
+            </div>
+            <div class="wa-chat-link">https://gostlumen.2lp.in/</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mockup Twitter / X -->
+      <div class="mockup-column">
+        <div class="platform-header">
+          <span style="font-size: 1.4rem;">𝕏</span>
+          <h2>Twitter / X (Summary Large Image)</h2>
+        </div>
+        <div class="twitter-container">
+          <img src="assets/og_preview.png" class="twitter-img" alt="Preview gost-profile-lumen">
+          <div class="twitter-info">
+            <div class="twitter-domain">gostlumen.2lp.in</div>
+            <div class="twitter-title">Perfil Lumen — GOST: Identidade, Versões &amp; Dark Mode</div>
+            <div class="twitter-desc">Perfil de especialização pessoal da norma GOST com herança Kollontai, versão short/long, rodapé transfeminista e Open Graph KokoroSim.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Imagem Original em Alta Resolução -->
+    <div class="raw-image-section">
+      <h3>Banner Canônico Gerado (1200 × 630 px)</h3>
+      <div class="raw-image-frame">
+        <img src="assets/og_preview.png" alt="Banner Oficial gost-profile-lumen">
+      </div>
+    </div>
+
+    <!-- Rodapé Canônico em 2 Linhas -->
+    <footer class="site-footer">
+      <div class="footer-canonical">
+        <div class="footer-line-identity">
+          Orgulhosamente produzido por uma <a href="https://travesti.2lp.in/pt/" target="_blank" rel="noopener">travesti latina</a> 🏳️‍⚧️ :)
+        </div>
+        <div class="footer-line-metadata">
+          gost-profile-lumen v0.1.0-dev.1 • por <a href="https://lumen.pink" target="_blank" rel="noopener">Lumen Pink</a> • Brasil 🇧🇷 • <a href="LICENSE">CC-BY-SA-4.0</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
