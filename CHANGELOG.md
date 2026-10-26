@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **ci:** remover step obsoleto de deploy para pages (closes #9)
+
 ### Added
 - **spec:** normatizar flag e mecanismo de auto_update configuravel (closes #5)
 - **spec:** normatizar continuous deployment soberano de containers e descomissionar watchtower (closes #4)
