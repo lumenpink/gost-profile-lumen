@@ -92,6 +92,14 @@ else
     echo "  [PASS] Mutante D (sem gambi.2lp.in) isolado com sucesso"
 fi
 
+grep -vi "rollback" "$PROFILE" > "$TMP_MUTANT"
+if grep -qiF "rollback" "$TMP_MUTANT"; then
+    echo "  [FAIL] Mutante E não foi gerado corretamente"
+    FAILED=1
+else
+    echo "  [PASS] Mutante E (sem rollback) isolado com sucesso"
+fi
+
 if [ $FAILED -ne 0 ]; then
     echo "❌ [RED TEST] Auditoria falhou: profile.md ainda não implementou a especificação completa de Lilya."
     exit 1
