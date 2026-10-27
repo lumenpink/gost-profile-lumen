@@ -1,13 +1,14 @@
-# Perfil de Implementação GOST: Lumen
+# Perfil de Implementação GOST: Lilya
 
 ```yaml
 ---
-id: lumen
-name: "Perfil de Implementação Lumen"
+id: lilya
+name: "Perfil de Implementação Lilya"
 extends: "https://kollontai.2lp.in/profile.md"
-target_gost: "1.5.0"
+target_gost: "2.0.0"
 maintainer: "Lumen Pink <hi@lumen.pink>"
-canonical_url: "https://gostlumen.2lp.in/profile.md"
+canonical_url: "https://lilya.2lp.in/profile.md"
+status: "Ativo / Produção"
 ---
 ```
 
