@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Gera o banner de compartilhamento Open Graph / Twitter Card (1200x630 pixels)
-para o perfil GOST Lumen com Safe Zone 4:3 no miolo centralizado (blindado contra
+para o perfil GOST Lilya com Safe Zone 4:3 no miolo centralizado (blindado contra
 recortes do WhatsApp e redes móveis), tipografia nítida e estética transfeminista hacker.
 """
 
@@ -77,13 +77,13 @@ def create_og_image(output_path="site/assets/og_preview.png"):
     tdraw.line([(accent_line_x, accent_line_y), (accent_line_x + accent_line_w, accent_line_y)], fill=(255, 121, 198, 220), width=3)
 
     # 6. Títulos de alto impacto no Miolo Central (Safe Zone 4:3: 720-840px útil)
-    t1_text = "Perfil de Implementação Pessoal Lumen"
+    t1_text = "Perfil de Implementação Lilya"
     t1_box = tdraw.textbbox((0, 0), t1_text, font=f_title1)
     t1_x = (width - (t1_box[2] - t1_box[0])) // 2
     t1_y = 265
     tdraw.text((t1_x, t1_y), t1_text, font=f_title1, fill=(240, 246, 252, 250))
 
-    t2_text = "Norma GOST • Estilo • Rodapé • Dark Mode • KokoroSim OG"
+    t2_text = "Norma GOST 2.0.0 • Estilo • Rodapé • Dark Mode • KokoroSim OG"
     t2_box = tdraw.textbbox((0, 0), t2_text, font=f_title2)
     t2_x = (width - (t2_box[2] - t2_box[0])) // 2
     t2_y = 330
@@ -103,7 +103,7 @@ def create_og_image(output_path="site/assets/og_preview.png"):
 
     # Ponto neon de status
     tdraw.ellipse([f_bar_x, foot_y + 4, f_bar_x + 14, foot_y + 18], fill=(255, 121, 198, 255))
-    tdraw.text((f_bar_x + 24, foot_y), "gostlumen.2lp.in", font=f_url, fill=(88, 166, 255, 255))
+    tdraw.text((f_bar_x + 24, foot_y), "lilya.2lp.in", font=f_url, fill=(88, 166, 255, 255))
 
     auth_text = "Lumen Pink // Brasil // CC-BY-SA-4.0"
     abox = tdraw.textbbox((0, 0), auth_text, font=f_author)
@@ -118,7 +118,7 @@ def create_og_image(output_path="site/assets/og_preview.png"):
     base = base.convert("RGB")
     base.save(output_path, format="PNG", optimize=True)
     file_size_kb = os.path.getsize(output_path) / 1024
-    print(f"✅ Banner OG Lumen centrado com Safe Zone 4:3 gerado: {output_path} ({width}x{height}, {file_size_kb:.1f} KB)")
+    print(f"✅ Banner OG Lilya centrado com Safe Zone 4:3 gerado: {output_path} ({width}x{height}, {file_size_kb:.1f} KB)")
 
 if __name__ == "__main__":
     create_og_image()

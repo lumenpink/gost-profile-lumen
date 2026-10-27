@@ -1,10 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "gost-profile-lumen",
-  "compatibility_date": "2024-09-23",
+  "name": "gost-profile-lilya",
+  "compatibility_date": "2026-01-01",
   "routes": [
     {
-      "pattern": "gostlumen.2lp.in",
+      "pattern": "lilya.2lp.in",
       "custom_domain": true
     }
   ],

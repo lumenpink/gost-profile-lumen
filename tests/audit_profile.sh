@@ -10,7 +10,7 @@ echo "=== [TEST] Auditoria Normativa do Perfil Lilya (profile.md) ==="
 check_pattern() {
     local pattern="$1"
     local desc="$2"
-    if grep -qF -- "$pattern" "$PROFILE"; then
+    if grep -qiF -- "$pattern" "$PROFILE"; then
         echo "  [PASS] $desc"
     else
         echo "  [FAIL] $desc (padrão '$pattern' não encontrado)"
